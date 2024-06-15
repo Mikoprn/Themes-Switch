@@ -1,0 +1,22 @@
+// Themes
+const body = document.querySelector("body");
+themeButton = document.querySelector(".theme__button");
+
+let theme = localStorage.getItem("theme");
+if (theme && theme === "dark") {
+  body.classList.add("dark-mode");
+  themeButton.classList.add("active");
+}
+
+themeButton.addEventListener("click", () => {
+  body.classList.toggle("dark-mode");
+
+  if (!body.classList.contains("dark-mode")) {
+    return localStorage.setItem("theme", "light");
+  }
+  localStorage.setItem("theme", "dark");
+});
+
+themeButton.addEventListener("click", () => {
+  themeButton.classList.toggle("active");
+});
